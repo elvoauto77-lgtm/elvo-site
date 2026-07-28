@@ -814,6 +814,15 @@ img,iframe{max-width:100%}
 .cm-status.ok{color:var(--accent)}
 .cm-status.err{color:#ff6b6b}
 @media(max-width:480px){.cm-row{flex-direction:column;gap:0}.cm-box{padding:28px 20px}}
+
+/* ===== bandeau "choisir une formule" ===== */
+.pick-hint{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(22,185,129,.16),rgba(22,185,129,.04));border:1px solid rgba(22,185,129,.35);border-radius:16px;padding:15px 22px}
+.pick-hint .ph-badge{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--accent);color:#04120c;font-family:'Exo 2';font-weight:600;font-size:1rem}
+.pick-hint p{flex:1;min-width:0;font-size:.98rem;color:#fff;font-weight:300;line-height:1.5}
+.pick-hint p strong{font-weight:600}
+.pick-hint .ph-arrow{width:26px;height:26px;flex:none;color:var(--accent);animation:phBounce 1.5s var(--ease) infinite}
+@keyframes phBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:560px){.pick-hint{gap:12px;padding:14px 16px}.pick-hint .ph-arrow{display:none}.pick-hint p{font-size:.9rem}}
 </style>
 <script type="application/ld+json">
 {
@@ -1155,7 +1164,7 @@ img,iframe{max-width:100%}
     <div class="head ctr">
       <span class="eyebrow reveal">Devis gratuit et sans engagement</span>
       <h2 class="reveal d1">Réservez votre prestation en ligne</h2>
-      <p class="reveal d2">Composez votre formule, choisissez votre créneau : votre devis s'affiche en direct.</p>
+      <p class="reveal d2">Cliquez sur la formule qui vous convient pour voir les créneaux disponibles et réserver en ligne — en 2 minutes.</p>
     </div>
 
     <div class="contact-invite reveal" style="margin-bottom:26px">
@@ -1167,6 +1176,11 @@ img,iframe{max-width:100%}
     </div>
 
     <!-- Réservation en ligne — Cal.com -->
+    <div class="pick-hint reveal" style="margin-bottom:18px">
+      <span class="ph-badge">1</span>
+      <p><strong>Cliquez sur la formule de votre choix</strong> ci-dessous pour voir les cr&eacute;neaux et r&eacute;server. Chaque formule affiche son prix et sa dur&eacute;e.</p>
+      <svg class="ph-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </div>
     <div class="reveal" id="my-cal-inline" style="width:100%;min-height:680px;overflow:auto;border-radius:18px;background:transparent"></div>
   </div>
 </section>
@@ -1515,13 +1529,13 @@ var ELVO_FORM_ENDPOINT = 'https://formsubmit.co/ajax/elvo.auto77@gmail.com';
   <div class="cgu-box" id="cguBox">
     <button class="cgu-close" id="cguClose" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <h2 id="cguTitle">Conditions générales</h2>
-    <p class="maj">ELVO SAS · Dernière mise à jour : juillet 2026</p>
+    <p class="maj">ELVO · Dernière mise à jour : juillet 2026</p>
 
     <h3 id="cgu">1. Objet</h3>
-    <p>Les présentes conditions générales régissent l'utilisation du site <strong>www.elvo-auto.fr</strong> et les prestations de nettoyage automobile sans eau réalisées à domicile par <strong>ELVO SAS</strong> (ci-après « ELVO »). Toute réservation implique leur acceptation pleine et entière.</p>
+    <p>Les présentes conditions générales régissent l'utilisation du site <strong>www.elvo-auto.fr</strong> et les prestations de nettoyage automobile sans eau réalisées à domicile par <strong>ELVO</strong> (ci-après « ELVO »). Toute réservation implique leur acceptation pleine et entière.</p>
 
     <h3>2. Éditeur du site</h3>
-    <p>Site édité par ELVO SAS, société par actions simplifiée.<br>
+    <p>Site édité par ELVO.<br>
     Contact : <a href="tel:+33618570257">06 18 57 02 57</a> · <a href="tel:+33783248950">07 83 24 89 50</a> · <a href="mailto:elvo.auto77@gmail.com">elvo.auto77@gmail.com</a><br>
     Zone d'intervention : Seine-et-Marne (77) et communes limitrophes.</p>
 
@@ -1560,7 +1574,7 @@ var ELVO_FORM_ENDPOINT = 'https://formsubmit.co/ajax/elvo.auto77@gmail.com';
     <h3>9. Responsabilité et limites</h3>
     <p>Un <strong>état des lieux visuel contradictoire</strong> est réalisé avec le client avant le début de la prestation. ELVO ne saurait être tenue responsable des dommages préexistants, notamment : rayures, éclats, peinture usée, oxydation, plastiques ternis, joints ou optiques dégradés, pare-brise fissuré, éléments mal fixés, sièges et cuirs déjà tachés, usés ou décolorés.</p>
     <p>ELVO est tenue à une <strong>obligation de moyens</strong>. Le résultat dépend de l'état initial du véhicule : la suppression des rayures profondes, taches anciennes incrustées ou odeurs persistantes n'est pas garantie.</p>
-    <p>ELVO se réserve le droit de refuser ou d'interrompre une intervention présentant un risque sanitaire, technique ou de sécurité. La responsabilité d'ELVO est couverte par une assurance responsabilité civile professionnelle.</p>
+    <p>ELVO se réserve le droit de refuser ou d'interrompre une intervention présentant un risque sanitaire, technique ou de sécurité.</p>
 
     <h3>10. Réclamations et litiges</h3>
     <p>Toute réserve doit être <strong>signalée immédiatement sur place</strong>, avant le départ du technicien, afin de permettre une reprise. Toute réclamation ultérieure doit être adressée à <a href="mailto:elvo.auto77@gmail.com">elvo.auto77@gmail.com</a>.</p>
@@ -1575,7 +1589,7 @@ var ELVO_FORM_ENDPOINT = 'https://formsubmit.co/ajax/elvo.auto77@gmail.com';
     <p>Le site utilise uniquement les cookies strictement nécessaires à son bon fonctionnement. Aucun cookie publicitaire ni traceur tiers à des fins de ciblage n'est déposé sans consentement préalable. Le client peut configurer son navigateur pour refuser les cookies.</p>
 
     <h3>13. Propriété intellectuelle</h3>
-    <p>L'ensemble des éléments du site (marque ELVO, logo, textes, visuels, mise en page) est protégé et demeure la propriété exclusive d'ELVO SAS. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
+    <p>L'ensemble des éléments du site (marque ELVO, logo, textes, visuels, mise en page) est protégé et demeure la propriété exclusive d'ELVO. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
 
     <h3>14. Modification des conditions</h3>
     <p>ELVO se réserve le droit de modifier les présentes conditions à tout moment. Les conditions applicables sont celles en vigueur à la date de la réservation.</p>
