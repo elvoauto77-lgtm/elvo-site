@@ -823,6 +823,22 @@ img,iframe{max-width:100%}
 .pick-hint .ph-arrow{width:26px;height:26px;flex:none;color:var(--accent);animation:phBounce 1.5s var(--ease) infinite}
 @keyframes phBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 @media(max-width:560px){.pick-hint{gap:12px;padding:14px 16px}.pick-hint .ph-arrow{display:none}.pick-hint p{font-size:.9rem}}
+
+/* ===== cartes de réservation (ouvrent Cal.com en popup) ===== */
+.book-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:860px;margin:0 auto}
+.book-card{position:relative;display:flex;flex-direction:column;gap:11px;text-align:left;background:linear-gradient(180deg,#16171C,#0E0F12);border:1px solid var(--line-2);border-radius:18px;padding:22px 24px;cursor:pointer;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);font-family:'Inter';color:#fff}
+.book-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 44px -22px rgba(22,185,129,.55)}
+.bc-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.bc-name{font-family:'Exo 2';font-size:1.3rem;font-weight:600}
+.bc-dur{font-size:.8rem;color:var(--muted);font-weight:400;white-space:nowrap}
+.bc-desc{font-size:.9rem;color:var(--soft);font-weight:300;line-height:1.5;flex:1}
+.bc-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.bc-price{font-family:'Exo 2';font-size:1.75rem;font-weight:600}
+.bc-cta{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-weight:600;font-size:.95rem}
+.bc-cta svg{width:17px;height:17px;transition:transform .3s var(--ease)}
+.book-card:hover .bc-cta svg{transform:translateX(4px)}
+.bc-badge{position:absolute;top:-10px;right:16px;background:var(--accent);color:#04120c;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+@media(max-width:640px){.book-cards{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
 {
@@ -1151,10 +1167,10 @@ img,iframe{max-width:100%}
     <div>
       <span class="eyebrow reveal">Notre zone d'intervention</span>
       <h2 class="reveal d1" style="font-size:clamp(2rem,4vw,3rem);margin:18px 0 20px">On se déplace près de chez vous</h2>
-      <div class="communes reveal d2"><span>Claye-Souilly</span><span>Mitry-Mory</span><span>Villeparisis</span><span>Meaux</span><span>Lagny-sur-Marne</span></div>
-      <p class="line reveal d3">Déplacement <strong>inclus</strong> dans toute notre zone. Ailleurs ? <a href="#devis">Écrivez-nous →</a></p>
+      <div class="communes reveal d2"><span>Claye-Souilly</span><span>Mitry-Mory</span><span>Villeparisis</span><span>Meaux</span><span>Lagny-sur-Marne</span><span>+ communes alentour</span></div>
+      <p class="line reveal d3">Intervention à domicile sur <strong>Claye-Souilly, Mitry-Mory, Villeparisis, Meaux, Lagny-sur-Marne</strong> et toutes les communes alentour (env. 20 km). Déplacement <strong>inclus</strong>. Une autre ville ? <a href="#devis">Écrivez-nous →</a></p>
     </div>
-    <div class="map reveal"><iframe loading="lazy" title="Zone ELVO" src="https://www.google.com/maps?q=Claye-Souilly,France&z=11&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="map reveal"><iframe loading="lazy" title="Zone ELVO" src="https://maps.google.com/maps?q=48.9436,2.6889&z=11&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
 </section>
 
@@ -1178,10 +1194,15 @@ img,iframe{max-width:100%}
     <!-- Réservation en ligne — Cal.com -->
     <div class="pick-hint reveal" style="margin-bottom:18px">
       <span class="ph-badge">1</span>
-      <p><strong>Cliquez sur la formule de votre choix</strong> ci-dessous pour voir les cr&eacute;neaux et r&eacute;server. Chaque formule affiche son prix et sa dur&eacute;e.</p>
+      <p><strong>Choisissez votre formule ci-dessous</strong> et cliquez sur &laquo;&nbsp;R&eacute;server&nbsp;&raquo; : vous verrez les cr&eacute;neaux disponibles et validerez en 2 minutes.</p>
       <svg class="ph-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
     </div>
-    <div class="reveal" id="my-cal-inline" style="width:100%;min-height:680px;overflow:auto;border-radius:18px;background:transparent"></div>
+    <div class="book-cards reveal">
+      <button class="book-card" type="button" data-cal-namespace="elvo" data-cal-link="elvo-detailing/exterieur-soin-sans-eau" data-cal-config='{"layout":"month_view","theme":"dark"}'><div class="bc-top"><span class="bc-name">Ext&eacute;rieur</span><span class="bc-dur">58 min</span></div><span class="bc-desc">Carrosserie sans eau, jantes, flancs de pneus, plastiques &amp; vitres ext&eacute;rieures.</span><div class="bc-bottom"><span class="bc-price">59 &euro;</span><span class="bc-cta">R&eacute;server <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+      <button class="book-card" type="button" data-cal-namespace="elvo" data-cal-link="elvo-detailing/interieur-habitacle-net" data-cal-config='{"layout":"month_view","theme":"dark"}'><div class="bc-top"><span class="bc-name">Int&eacute;rieur</span><span class="bc-dur">1 h 20</span></div><span class="bc-desc">Aspiration compl&egrave;te, plastiques, vitres int&eacute;rieures, seuils de portes.</span><div class="bc-bottom"><span class="bc-price">75 &euro;</span><span class="bc-cta">R&eacute;server <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+      <button class="book-card" type="button" data-cal-namespace="elvo" data-cal-link="elvo-detailing/l-excellence-interieur-exterieur" data-cal-config='{"layout":"month_view","theme":"dark"}'><span class="bc-badge">Populaire</span><div class="bc-top"><span class="bc-name">L&rsquo;Excellence</span><span class="bc-dur">2 h 20</span></div><span class="bc-desc">Int&eacute;rieur + Ext&eacute;rieur complets, en un seul rendez-vous.</span><div class="bc-bottom"><span class="bc-price">95 &euro;</span><span class="bc-cta">R&eacute;server <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+      <button class="book-card" type="button" data-cal-namespace="elvo" data-cal-link="elvo-detailing/l-exquis-detailing-complet-premium" data-cal-config='{"layout":"month_view","theme":"dark"}'><div class="bc-top"><span class="bc-name">L&rsquo;Exquis</span><span class="bc-dur">3 h 30</span></div><span class="bc-desc">Detailing premium : shampouinage, taches &amp; odeurs, finitions au pinceau.</span><div class="bc-bottom"><span class="bc-price">149 &euro;</span><span class="bc-cta">R&eacute;server <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>
+    </div>
   </div>
 </section>
 
@@ -1634,11 +1655,6 @@ var ELVO_FORM_ENDPOINT = 'https://formsubmit.co/ajax/elvo.auto77@gmail.com';
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", "elvo", {origin:"https://cal.com"});
-  Cal.ns["elvo"]("inline", {
-    elementOrSelector:"#my-cal-inline",
-    config: {"layout":"month_view","theme":"dark"},
-    calLink: "elvo-detailing",
-  });
   Cal.ns["elvo"]("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#16b981"}},"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 <!-- Popup contact -->
