@@ -768,6 +768,27 @@ img,iframe{max-width:100%}
 .plans4 .plan .btn{padding:.78rem 1.4rem;font-size:.88rem}
 .plans4 .badge{font-size:.6rem;padding:6px 13px;top:16px}
 
+/* ===== mobile : cartes compactes + animations rapides ===== */
+@media(max-width:760px){
+  /* animations plus rapides pour un affichage quasi immédiat */
+  .reveal{transform:translateY(14px);filter:none !important;transition:opacity .38s var(--ease),transform .38s var(--ease) !important}
+  .page.in .reveal,.page.in .reveal.d1,.page.in .reveal.d2,.page.in .reveal.d3,.page.in .reveal.d4,.page.in .reveal.d5{transition-delay:.03s !important}
+  .clip{transition-duration:.4s !important}
+  .head h2.reveal,#hero h1.reveal{transition:opacity .42s var(--ease),transform .42s var(--ease),clip-path .48s var(--ease) !important}
+
+  /* formules : cartes moins hautes, plus d'air entre elles */
+  .plans.plans4{gap:26px}
+  .plans4 .plan,.plans4 .plan.feat{padding:30px 22px 26px !important}
+  .plans4 .plan h3{font-size:1.5rem}
+  .plans4 .plan .price{font-size:2.1rem;margin:10px 0 2px}
+  .plans4 .plan .pmut{min-height:0;margin-bottom:2px}
+  .plans4 .plan ul{margin:16px 0 20px;padding-top:16px;gap:9px}
+  .plans4 .plan li{font-size:.9rem}
+}
+@media(max-width:640px){
+  .plans.plans4{max-width:360px;gap:24px}
+}
+
 /* ===== grille d'heures ===== */
 .time-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:4px}
 @media(max-width:760px){.time-grid{grid-template-columns:repeat(4,1fr)}}
